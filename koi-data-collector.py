@@ -9,6 +9,7 @@ import RPi.GPIO as GPIO
 
 file_path = "/home/pi/koipond/pond-data.txt"
 
+# Name each 1-wire DS18B20 address
 temperature_sensor_1 = '/sys/bus/w1/devices/28-012114a4bd8f/w1_slave'
 temperature_sensor_2 = '/sys/bus/w1/devices/28-0121146e2ac7/w1_slave'
 temperature_sensor_3 = '/sys/bus/w1/devices/28-012114621451/w1_slave'
@@ -32,8 +33,6 @@ def read_temp(sensor_x):
         return temp_f
 
 def readVoltage(bus):
-
-        "This function returns as float the voltage from the Raspi UPS Hat via the provided SMBus object"
         address = 0x36
         read = bus.read_word_data(address, 0X02)
         swapped = struct.unpack("<H", struct.pack(">H", read))[0]
@@ -41,7 +40,6 @@ def readVoltage(bus):
         return voltage
 
 def readCapacity(bus):
-        "This function returns as a float the remaining capacity of the battery connected to the Raspi UPS Hat via the provided SMBus object"
         address = 0x36
         read = bus.read_word_data(address, 0X04)
         swapped = struct.unpack("<H", struct.pack(">H", read))[0]
@@ -66,7 +64,6 @@ def output_battery(myList): # Write to the file
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(4,GPIO.IN)
-
 bus = smbus.SMBus(1)  # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
 PowerOnReset(bus)
@@ -77,7 +74,7 @@ batteryVoltage = "Battery Voltage: %4.2f" % readVoltage(bus)
 batteryPercentage = "Battery Percentage: %i" % readCapacity(bus)
 
 if (readCapacity(bus) < 2):
-	 os.system("sudo poweroff")
+    os.system("sudo poweroff")
 
 if (readCapacity(bus) > 100):
 	batteryPercentage = "Battery Percentage: 100"
