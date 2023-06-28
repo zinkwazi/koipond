@@ -115,4 +115,3 @@ time.sleep(10)
 output_battery(myList)
 
 heat_sht31d_sensor()
-

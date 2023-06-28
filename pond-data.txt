@@ -1,0 +1,8 @@
+11:18:17 06-28-2023
+Battery Voltage: 4.15
+Battery Percentage: 94
+Temperature Pond-1: 63.27
+Temperature Pond-2: 63.50
+Temperature Pond-3: 63.95
+Ambient Temperature: 65.16
+Ambient Humidity: 75.91
