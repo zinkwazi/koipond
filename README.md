@@ -25,7 +25,7 @@ UserParameter=koipond.battery_percentage,grep Percentage /home/pi/koipond/pond-d
 UserParameter=koipond.temperature_sensor1,grep Pond-1 /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
 UserParameter=koipond.temperature_sensor2,grep Pond-2 /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
 UserParameter=koipond.temperature_sensor3,grep Pond-3 /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
- snesor
+ 
 # Air temp and humidity
 UserParameter=koipond.ambient_temperature,grep "Ambient Temperature" /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
 UserParameter=koipond.ambient_humidity,grep "Ambient Humidity" /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
