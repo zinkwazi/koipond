@@ -32,8 +32,8 @@ UserParameter=koipond.ambient_humidity,grep "Ambient Humidity" /home/pi/koipond/
 
 Data is then fed via Zabbix to Grafana for the pretty dashboards.
 
-
+This is pretty:
 ![alt text](https://github.com/zinkwazi/koipond/blob/main/image.png?raw=true)
 
-
+This is ugly:
 ![alt text](https://github.com/zinkwazi/koipond/blob/main/pi.jpg?raw=true)
