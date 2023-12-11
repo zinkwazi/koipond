@@ -1,5 +1,6 @@
 # koipond
 Koi Pond Monitoring with Raspberry Pi, Zabbix and Grafana.
+Water temperature in the 3 fish pond tanks as well as ambient air temperature and humidity are collected.
 
 Raspberry Pi Zero with multiple sensors to track pond water temperature as well as ambient air humidity and temperature.
 Backup power supplied by a UPS Lite V1.2 Power Hat. 
