@@ -1,22 +1,24 @@
 # koipond
-Koi Pond Monitoring with Raspberry Pi, Zabbix and Grafana.
-Water temperature in the 3 fish pond tanks as well as ambient air temperature and humidity are collected.
+Koi Pond Monitoring with Raspberry Pi, Zabbix, and Grafana.
+Water temperature in the three fish pond tanks, as well as ambient air temperature and humidity, are collected.
 
-Raspberry Pi Zero with multiple sensors to track pond water temperature as well as ambient air humidity and temperature.
-Backup power supplied by a UPS Lite V1.2 Power Hat. 
-Battery stats collected and written to the data file along with temperature and humidity data.
+A Raspberry Pi Zero with multiple sensors tracks pond water temperature, ambient air humidity, and temperature.
+Backup power is supplied by a UPS Lite V1.2 Power Hat.
+Battery stats are collected and written to the data file, along with temperature and humidity data.
 
-Hardware:
-* UPS-Lite 1.2 battery backup and Raspberry Pi Zero
+## Hardware
+* Raspberry Pi Zero
+* UPS-Lite 1.2 battery backup
 
 * 1-Wire sensors from Adafruit:
-  * Waterproof temerature sensors: https://www.adafruit.com/product/381
-  * Air temperature & humidity sensor: https://www.adafruit.com/product/4099
+  * Waterproof temperature sensors: [Adafruit Product 381](https://www.adafruit.com/product/381)
+  * Air temperature & humidity sensor: [Adafruit Product 4099](https://www.adafruit.com/product/4099)
 
+## Installation
+### Install Zabbix Agent on Raspberry Pi
+Add the following lines to `/etc/zabbix/zabbix_agentd.conf`:
 
-Install Zabbix agent on Raspberry Pi
-Add the following lines to /etc/zabbix/zabbix_agentd.conf
-```
+```bash
 # Battery data
 UserParameter=koipond.battery_voltage,grep Voltage /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
 UserParameter=koipond.battery_percentage,grep Percentage /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
@@ -31,10 +33,13 @@ UserParameter=koipond.ambient_temperature,grep "Ambient Temperature" /home/pi/ko
 UserParameter=koipond.ambient_humidity,grep "Ambient Humidity" /home/pi/koipond/pond-data.txt | cut -f3 -d ' '
 ```
 
-Data is then fed via Zabbix to Grafana for the pretty dashboards.
+Data is then fed via Zabbix to Grafana for visual dashboards.
 
-This is pretty:
-![alt text](https://github.com/zinkwazi/koipond/blob/main/image.png?raw=true)
+### Dashboard Visualization
+Grafana dashboard displaying pond data:
+![Grafana dashboard showing pond data](https://github.com/zinkwazi/koipond/blob/main/image.png?raw=true)
 
-This is ugly:
-![alt text](https://github.com/zinkwazi/koipond/blob/main/pi.jpg?raw=true)
+Raspberry Pi hardware setup for the koipond project:
+(Not pretty but has been running in a plastic box outside without issue for 1+ year)
+![Raspberry Pi setup for koipond project](https://github.com/zinkwazi/koipond/blob/main/pi.jpg?raw=true)
+
