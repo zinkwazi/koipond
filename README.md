@@ -1,10 +1,10 @@
 # koipond
-Koi Pond Monitoring with Raspberry Pi, Zabbix, and Grafana.
-Water temperature in the three fish pond tanks, as well as ambient air temperature and humidity, are collected.
+A Raspberry Pi Zero, with an array of sensors, monitors the water temperature of the pond/s, as well as the surrounding air's humidity and temperature levels. 
+A UPS Lite V1.2 Power Hat provides more than three hours of backup power to the Raspberry Pi. 
+Battery life, alongside environmental data, are logged to a file.
 
-A Raspberry Pi Zero with multiple sensors tracks pond water temperature, ambient air humidity, and temperature.
-Backup power is supplied by a UPS Lite V1.2 Power Hat.
-Battery stats are collected and written to the data file, along with temperature and humidity data.
+A Zabbix Agent, installed on the Raspberry Pi, reads the 'koipond' data file and relays it to the Zabbix server for monitoring. 
+This data pipeline feeds into a Grafana dashboard, which transforms the data into pretty graphs.
 
 ## Hardware
 * Raspberry Pi Zero
